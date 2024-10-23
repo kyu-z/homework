@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block content %}
+<h1 align="center">Shopping Cart</h1>
+<ul class="list-group list-group-flush" id="cart-items">
+    {% for item in items %}
+        <li class="list-group-item">
+            {{ item.name }} (Added on: {{ item.date }})
+            <button type="button" class="close" onClick="deleteItem({{ item.id }})">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </li>
+    {% else %}
+        <li class="list-group-item">No items in the cart.</li>
+  {% endfor %}
+</ul>
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+
+{% endblock %}
+
